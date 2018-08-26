@@ -1,5 +1,7 @@
 # Typographical Number Theorem
 
+[![GoDoc](https://godoc.org/github.com/jeremyhuiskamp/tnt?status.svg)](https://godoc.org/github.com/jeremyhuiskamp/tnt)
+
 This is a simple golang libary for parsing and reasoning about strings of
 Typographical Number Theorem as described in Chapter 8 of "Gödel, Escher, Bach"
 by Douglas Hofstadter.
