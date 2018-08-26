@@ -15,4 +15,5 @@ strings explicit, so as to avoid mistakes made by intuitive assumptions.
 - [ ] systems comprised of axioms and theorems
 - [ ] automated checking of derivations
 - [ ] automated generation of derivations?
+- [ ] additional features from propositional calculus
 
