@@ -169,7 +169,7 @@ func (c Compound) Open() bool {
 }
 
 // WellFormed returns true if both contained Formulas are WellFormed,
-// and no Variable with is free in one is quantified in the other.
+// and no Variable which is free in one is quantified in the other.
 func (c Compound) WellFormed() bool {
 	if !c.Left.WellFormed() || !c.Right.WellFormed() {
 		return false
@@ -181,7 +181,7 @@ func (c Compound) WellFormed() bool {
 
 	rv := c.Right.Variables()
 	rf := c.Right.FreeVariables()
-	rq := rv.Complement(rv)
+	rq := rv.Complement(rf)
 
 	lfrq := lf.Intersection(rq)
 	rflq := rf.Intersection(lq)
