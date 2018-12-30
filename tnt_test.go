@@ -12,6 +12,7 @@ func TestWellFormed(t *testing.T) {
 		"<a=b^b=c>",
 		"~<a=b^b=c>",
 		"Aa:Eb:<a=b^b=c>",
+		"Eb:b=a",
 	} {
 		formula, err := ParseFormula(wellFormed)
 		if err != nil {
@@ -22,10 +23,13 @@ func TestWellFormed(t *testing.T) {
 	}
 
 	for _, notWellFormed := range []string{
-		"<Aa:0=0^a=a>",
-		"~<Aa:0=0^a=a>",
-		"Eb:<Aa:0=0^a=b>",
-		"Eb:Ab:a=b", // b is not free
+		"<Aa:a=a^a=a>",    // a quantified on left, but not right
+		"~<Aa:a=a^a=a>",   // negation of above
+		"<a=a^Aa:a=a>",    // a quantified on right, but not left
+		"~<a=a^Aa:a=a>",   // negation of above
+		"Eb:<Aa:a=a^a=b>", // quantification of above
+		"Aa:0=0",          // a is not free
+		"Ea:Aa:a=0",       // a is quantified twice
 	} {
 		formula, err := ParseFormula(notWellFormed)
 		if err != nil {
